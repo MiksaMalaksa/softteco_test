@@ -65,6 +65,6 @@ class AppThemeData {
                 color: Color.fromARGB(255, 147, 144, 144), fontSize: 28),
             bodyMedium: const TextStyle(color: Colors.white, fontSize: 28),
             titleSmall: const TextStyle(
-                color: Color.fromARGB(255, 185, 182, 182), fontSize: 22)),
+                color: Color.fromARGB(255, 185, 182, 182), fontSize: 20)),
       );
 }
