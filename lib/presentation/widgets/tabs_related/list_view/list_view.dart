@@ -14,6 +14,7 @@ class ListViewMode extends StatelessWidget {
       scrollDirection: Axis.vertical,
       itemCount: users.length,
       itemBuilder: (context, index) => Dismissible(
+        direction: DismissDirection.endToStart,
           key: ValueKey(users[index].id),
           background: Container(
             decoration:
