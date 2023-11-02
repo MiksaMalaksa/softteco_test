@@ -8,7 +8,7 @@ class LoadAgain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.view_agenda_outlined),
+      leading: const Icon(Icons.repeat),
       iconColor: Theme.of(context).colorScheme.secondary,
       dense: true,
       title: Text(
