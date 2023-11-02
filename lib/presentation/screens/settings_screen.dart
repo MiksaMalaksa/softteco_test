@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
         children: [
           Text(
             "Navigation",
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(
             height: heightBetweenTitleAndButton,
@@ -73,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
           ),
           Text(
             "Load again",
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.titleMedium,
           ),
           const SizedBox(
             height: heightBetweenTitleAndButton,

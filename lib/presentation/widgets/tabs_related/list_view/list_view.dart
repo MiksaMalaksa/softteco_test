@@ -9,14 +9,18 @@ class ListViewMode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return ListView.builder(
       padding: const EdgeInsets.all(5),
       scrollDirection: Axis.vertical,
       itemCount: users.length,
-      itemBuilder: (context, index) => ListElement(user: users[index]),
-      separatorBuilder: (_, index) => const SizedBox(
-        height: 4,
-      ),
+      itemBuilder: (context, index) => Dismissible(
+          key: ValueKey(users[index].id),
+          background: Container(
+            decoration:
+                BoxDecoration(color: Theme.of(context).primaryColorLight),
+                child: Center(child: Text("Delete",style: Theme.of(context).textTheme.bodySmall,)),
+          ),
+          child: ListElement(user: users[index])),
     );
   }
 }
