@@ -11,7 +11,14 @@ class ListElement extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: Image.network(user.thumbNail),
+        leading: user.thumbNail == null
+            ? Image.file(
+                user.memoryImage!,
+              )
+            : Image.network(
+                user.thumbNail!,
+                fit: BoxFit.cover,
+              ),
         title: Text(
           user.fullName,
           style: Theme.of(context).textTheme.titleMedium,

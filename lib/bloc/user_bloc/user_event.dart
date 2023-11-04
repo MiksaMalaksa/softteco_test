@@ -7,3 +7,8 @@ sealed class UsersEvent {
 final class LoadUsers extends UsersEvent {
   const LoadUsers();
 }
+
+final class AddUser extends UsersEvent {
+  final User user;
+  const AddUser({required this.user});
+}

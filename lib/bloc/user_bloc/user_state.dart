@@ -20,3 +20,8 @@ final class Loaded extends UsersState {
 final class Error extends UsersState {
   const Error();
 }
+
+final class UserAdded extends UsersState {
+  final List<User> users;
+  const UserAdded({required this.users});
+}

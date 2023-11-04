@@ -29,6 +29,7 @@ Future<List<User>> getUsers() async {
         thumbNail: thumbNailPicture,
         mediumPicture: mediumPicture,
         largePicture: largePicture,
+        memoryImage: null,
         gender: gender);
 
     users.add(user);

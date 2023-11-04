@@ -43,10 +43,15 @@ class GridElement extends StatelessWidget {
                       color: Theme.of(context).scaffoldBackgroundColor,
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       border: Border.all(width: 3, color: Colors.white)),
-                  child: Image.network(
-                    user.largePicture,
-                    fit: BoxFit.cover,
-                  ),
+                  child: user.largePicture == null
+                      ? Image.file(
+                          user.memoryImage!,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.network(
+                          user.largePicture!,
+                          fit: BoxFit.cover,
+                        ),
                 ),
               ),
             ),
@@ -58,7 +63,6 @@ class GridElement extends StatelessWidget {
                     .textTheme
                     .bodyMedium!
                     .copyWith(fontSize: 18),
-                //softWrap: true,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
               ),
@@ -70,7 +74,6 @@ class GridElement extends StatelessWidget {
                     .textTheme
                     .bodyMedium!
                     .copyWith(fontSize: 18),
-                //softWrap: true,
                 overflow: TextOverflow.ellipsis,
                 textAlign: TextAlign.center,
               ),

@@ -29,12 +29,19 @@ class DetailsScreen extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadiusDirectional.circular(50),
-                child: Image.network(
-                  user.largePicture,
-                  height: 350,
-                  width: 350,
-                  fit: BoxFit.cover,
-                ),
+                child: user.largePicture == null
+                    ? Image.file(
+                        user.memoryImage!,
+                        height: 350,
+                        width: 350,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.network(
+                        user.largePicture!,
+                        height: 350,
+                        width: 350,
+                        fit: BoxFit.cover,
+                      ),
               ),
               const SizedBox(
                 height: 10,

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:uuid/uuid.dart';
 
 enum Gender {
@@ -13,9 +15,10 @@ class User {
   final String adress;
   final String phoneNumber;
   final String email;
-  final String thumbNail;
-  final String mediumPicture;
-  final String largePicture;
+  final String? thumbNail;
+  final String? mediumPicture;
+  final String? largePicture;
+  final File? memoryImage;
   final Gender gender;
   final String id;
 
@@ -28,6 +31,7 @@ class User {
       required this.thumbNail,
       required this.mediumPicture,
       required this.largePicture,
+      required this.memoryImage,
       required this.gender})
       : id = uuid.v4();
 

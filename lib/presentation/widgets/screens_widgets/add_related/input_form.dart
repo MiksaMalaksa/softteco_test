@@ -1,18 +1,18 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:softteco_rest_json/models/user.dart';
-import 'input_element.dart';
+
+import 'global_form_key.dart';
 
 class InputUserInfo extends StatefulWidget {
-  const InputUserInfo({super.key});
+  const InputUserInfo({super.key, required this.newUserInfo});
+
+  final void Function(String key, String value) newUserInfo;
 
   @override
   State<InputUserInfo> createState() => _InputUserInfoState();
 }
 
 class _InputUserInfoState extends State<InputUserInfo> {
-  final _formKey = GlobalKey<FormState>();
   String name = "";
   String surname = "";
   String adress = "";
@@ -20,37 +20,85 @@ class _InputUserInfoState extends State<InputUserInfo> {
   String email = "";
   Gender gender = Gender.female;
 
-  void onReset() {
-    _formKey.currentState!.reset();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(children: [
         TextFormField(
-          maxLength: 20,
-          cursorColor: Theme.of(context).colorScheme.secondary,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(fontWeight: FontWeight.w400),
-          decoration: const InputDecoration(
-            label: Text(
-              "Write user's name",
+            maxLength: 20,
+            cursorColor: Theme.of(context).colorScheme.secondary,
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(fontWeight: FontWeight.w400),
+            decoration: InputDecoration(
+              labelText: "Write user's name",
+              labelStyle: TextStyle(
+                color: Theme.of(context).primaryColorDark,
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color:
+                      Theme.of(context).colorScheme.secondary.withOpacity(0.6),
+                ),
+              ),
             ),
-          ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Name is required";
-            } else if (value.trim().length <= 1) {
-              return "Please enter a valid Name";
-            }
-            return null;
-          },
-          onSaved: (newValue) => name = newValue!,
-        ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Name is required";
+              } else if (value.trim().length <= 1) {
+                return "Please enter a valid Name";
+              }
+              return null;
+            },
+            onSaved: (newValue) {
+              name = newValue!;
+              widget.newUserInfo("name", name);
+            }),
+        TextFormField(
+            maxLength: 20,
+            cursorColor: Theme.of(context).colorScheme.secondary,
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(fontWeight: FontWeight.w400),
+            decoration: InputDecoration(
+              label: const Text(
+                "Write user's surname",
+              ),
+              labelStyle: TextStyle(
+                color: Theme.of(context).primaryColorDark,
+              ),
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color:
+                      Theme.of(context).colorScheme.secondary.withOpacity(0.6),
+                ),
+              ),
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return "Surname is required";
+              } else if (value.trim().length <= 1) {
+                return "Please enter a valid surname";
+              }
+              return null;
+            },
+            onSaved: (newValue) {
+              surname = newValue!;
+              widget.newUserInfo("surname", surname);
+            }),
         TextFormField(
           maxLength: 20,
           cursorColor: Theme.of(context).colorScheme.secondary,
@@ -58,31 +106,22 @@ class _InputUserInfoState extends State<InputUserInfo> {
               .textTheme
               .titleSmall!
               .copyWith(fontWeight: FontWeight.w400),
-          decoration: const InputDecoration(
-            label: Text(
-              "Write user's surname",
-            ),
-          ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return "Surname is required";
-            } else if (value.trim().length <= 1) {
-              return "Please enter a valid surname";
-            }
-            return null;
-          },
-          onSaved: (newValue) => surname = newValue!,
-        ),
-        TextFormField(
-          maxLength: 20,
-          cursorColor: Theme.of(context).colorScheme.secondary,
-          style: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(fontWeight: FontWeight.w400),
-          decoration: const InputDecoration(
-            label: Text(
+          decoration: InputDecoration(
+            label: const Text(
               "Write user's adress",
+            ),
+            labelStyle: TextStyle(
+              color: Theme.of(context).primaryColorDark,
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary.withOpacity(0.6),
+              ),
             ),
           ),
           validator: (value) {
@@ -93,7 +132,10 @@ class _InputUserInfoState extends State<InputUserInfo> {
             }
             return null;
           },
-          onSaved: (newValue) => adress = newValue!,
+          onSaved: (newValue) {
+            adress = newValue!;
+            widget.newUserInfo("adress", adress);
+          },
         ),
         TextFormField(
           maxLength: 15,
@@ -103,9 +145,22 @@ class _InputUserInfoState extends State<InputUserInfo> {
               .textTheme
               .titleSmall!
               .copyWith(fontWeight: FontWeight.w400),
-          decoration: const InputDecoration(
-            label: Text(
+          decoration: InputDecoration(
+            label: const Text(
               "Write user's telephone number",
+            ),
+            labelStyle: TextStyle(
+              color: Theme.of(context).primaryColorDark,
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary.withOpacity(0.6),
+              ),
             ),
           ),
           validator: (value) {
@@ -116,7 +171,10 @@ class _InputUserInfoState extends State<InputUserInfo> {
             }
             return null;
           },
-          onSaved: (newValue) => telephoneNumber = newValue!,
+          onSaved: (newValue) {
+            telephoneNumber = newValue!;
+            widget.newUserInfo("phone", telephoneNumber);
+          },
         ),
         TextFormField(
           maxLength: 30,
@@ -126,9 +184,22 @@ class _InputUserInfoState extends State<InputUserInfo> {
               .textTheme
               .titleSmall!
               .copyWith(fontWeight: FontWeight.w400),
-          decoration: const InputDecoration(
-            label: Text(
+          decoration: InputDecoration(
+            label: const Text(
               "Write user's email",
+            ),
+            labelStyle: TextStyle(
+              color: Theme.of(context).primaryColorDark,
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary.withOpacity(0.6),
+              ),
             ),
           ),
           validator: (value) {
@@ -140,7 +211,10 @@ class _InputUserInfoState extends State<InputUserInfo> {
             }
             return null;
           },
-          onSaved: (newValue) => email = newValue!,
+          onSaved: (newValue) {
+            email = newValue!;
+            widget.newUserInfo("email", email);
+          },
         ),
       ]),
     );
