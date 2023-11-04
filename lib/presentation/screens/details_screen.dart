@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:softteco_rest_json/models/user.dart';
 import 'package:softteco_rest_json/presentation/widgets/app_bars/actions_app_bar.dart/actions/no_action.dart';
 import 'package:softteco_rest_json/presentation/widgets/app_bars/application_app_bar.dart';
-import 'package:softteco_rest_json/presentation/widgets/details_related/descreption_element.dart';
+import 'package:softteco_rest_json/presentation/widgets/screens_widgets/details_related/descreption_element.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.user});

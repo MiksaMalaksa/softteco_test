@@ -4,7 +4,7 @@ import 'package:softteco_rest_json/bloc/user_bloc/user_bloc.dart';
 import 'package:softteco_rest_json/presentation/screens/settings_screen.dart';
 import 'package:softteco_rest_json/presentation/widgets/app_bars/application_app_bar.dart';
 import '../widgets/app_bars/actions_app_bar.dart/all_actions.dart';
-import '../widgets/tabs_related/content.dart';
+import '../widgets/screens_widgets/tabs_related/content.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key, required this.view, required this.needLoading});

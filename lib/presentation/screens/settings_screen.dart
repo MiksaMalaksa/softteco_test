@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:softteco_rest_json/presentation/screens/start_screen.dart';
 import 'package:softteco_rest_json/presentation/screens/tabs_screen.dart';
-import 'package:softteco_rest_json/presentation/widgets/settings_related/load_again.dart';
+import 'package:softteco_rest_json/presentation/widgets/screens_widgets/settings_related/load_again.dart';
 import '../widgets/app_bars/actions_app_bar.dart/actions/theme_change_icon.dart';
 
 const double heightBetweenTitleAndButton = 12;

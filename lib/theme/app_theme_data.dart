@@ -22,6 +22,7 @@ class AppThemeData {
         colorScheme: const ColorScheme.light(
           secondary: Color(0xff3d5a80),
           tertiary: Colors.deepPurpleAccent,
+
         ),
         iconTheme: const IconThemeData(
           color: Colors.black,
@@ -34,6 +35,7 @@ class AppThemeData {
             bodySmall: const TextStyle(color: Colors.white, fontSize: 16),
             titleSmall:
                 const TextStyle(color: Color(0xff3d5a80), fontSize: 20)),
+                
       );
 
   static ThemeData darkTheme() => ThemeData(
