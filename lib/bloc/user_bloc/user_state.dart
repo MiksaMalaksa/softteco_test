@@ -25,3 +25,8 @@ final class UserAdded extends UsersState {
   final List<User> users;
   const UserAdded({required this.users});
 }
+
+final class UserRemoved extends UsersState {
+  final List<User> users;
+  const UserRemoved({required this.users});
+}

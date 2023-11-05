@@ -9,6 +9,7 @@ class UserBloc extends Bloc<UsersEvent, UsersState> {
   UserBloc() : super(const Initial()) {
     on<LoadUsers>(_onLoadUsers);
     on<AddUser>(_onAddUser);
+    on<RemoveUser>(_onRemoveUser);
   }
 
   void _onLoadUsers(LoadUsers event, Emitter<UsersState> emit) async {
@@ -23,6 +24,12 @@ class UserBloc extends Bloc<UsersEvent, UsersState> {
   }
 
   void _onAddUser(AddUser event, Emitter<UsersState> emit) {
-    emit(UserAdded(users: [...users, event.user]));
+    users.add(event.user);
+    emit(UserAdded(users: users));
+  }
+
+  void _onRemoveUser(RemoveUser event, Emitter<UsersState> emit) {
+    users.remove(event.user);
+    emit(UserAdded(users: users));
   }
 }

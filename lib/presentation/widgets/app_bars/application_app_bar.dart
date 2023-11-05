@@ -18,6 +18,7 @@ class ApplicationBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       actions: actions,
+      automaticallyImplyLeading: false,
     );
   }
 

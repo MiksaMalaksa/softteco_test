@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:softteco_rest_json/bloc/user_bloc/user_bloc.dart';
 import 'package:softteco_rest_json/presentation/widgets/screens_widgets/tabs_related/list_view/list_element.dart';
-import '../users.dart';
+import '../../../../../models/user.dart';
 
 class ListViewMode extends StatelessWidget {
-  const ListViewMode({super.key});
+  const ListViewMode({super.key, required this.users});
 
+  final List<User> users;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class ListViewMode extends StatelessWidget {
           direction: DismissDirection.endToStart,
           key: ValueKey(users[index].id),
           onDismissed: (_) {
-            users.removeAt(index);
+            context.read<UserBloc>().add(RemoveUser(user: users[index]));
           },
           background: Container(
             decoration:
